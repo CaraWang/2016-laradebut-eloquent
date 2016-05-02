@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>cnYES 的新聞數據分析資料</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,165 +9,576 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>cnYES 的新聞數據分析資料介接 - Cara Wang</h1>
+		<p>使用 Google Analytics API 與 Facebook API</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-		<img src="pictures/cover.jpg" alt="" class="cover">
+		<h2>cnYES 的新聞數據分析資料介接</h2>
+		<h3>使用 Google Analytics API 與 Facebook API</h3>
+		<p>Cara Wang &lt;caraw@cnyes.com&gt;</p>
+		<img src="pictures/cover.jpeg" alt="" class="cover">
 		<!--
 			To apply styles to the certain slides
 			set slide ID to get needed elements
 			-->
 		<style>
 			#cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
+				margin: 80px 0 0;
+				padding: 10px;
+				color:#f0fcfe;
 				text-align:center;
-				font-size:70px;
+				font-size:60px;
+				border-width: 5px;
+				border-color: #f0fcfe;
+				border-top-style: solid;
+				border-bottom-style: solid;
+				}
+			#cover h3 {
+				margin:30px 0 0;
+				color:#f0fcfe;
+				text-align:center;
+				font-size:30px;
 				}
 			#cover p {
 				margin:10px 0 0;
 				text-align:center;
-				color:#FFF;
+				color:#f0fcfe;
 				font-style:italic;
 				font-size:20px;
 				}
 				#cover p a {
-					color:#FFF;
+					color:#f0fcfe;
 					}
+			#cover img {
+				opacity: 0.9;
+			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Shower key features</h2>
+		<h2>有沒有一目了然的方式讓 新聞 的瀏覽量和社群分享成效可以被分析</h2>
 		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
+			<li class="next">可以整合 Google Analytics 的數據嗎?</li>
+			<li class="next">Facebook 的 讚數/分享數 可以取得嗎?</li>
 		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
 	</section>
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+		<div id="gaAPI"><a href="https://developers.google.com/analytics/">Google Develpers</a></div>
+		<img src="pictures/gaAPI.png" alt="" class="cover">
+		<style>
+			#gaAPI {
+				position: absolute;
+				bottom: 10%;
+				right: 10%;
+				}
+		</style>
 	</section>
 	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+		<p id="fbAPI"><a href="https://developers.facebook.com/">Facebook for Develpers</a></p>
+		<img src="pictures/fbAPI.png" alt="" class="cover">
+		<style>
+			#fbAPI {
+				position: absolute;
+				bottom: 10%;
+				right: 10%;
+				}
+		</style>
 	</section>
 	<section class="slide">
-		<h2>All kind of lists</h2>
+		<h2>欲蒐集的資料對應要下的 API 參數</h2>
 		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
+			<li class="next">
+				瀏覽量: Google Analytics 有蒐集新聞 URL 對應的 Pageview
+				<ol>
+					<li class="next">我們的目標: 取得所有 URL 含有 <code>/content/</code> 的 pageview</li>
+					<li class="next">好工具: <a href="https://ga-dev-tools.appspot.com/query-explorer/">Query Exploer</a></li>
+				</ol>
 			</li>
-			<li>Look, seven rows exactly!</li>
 		</ol>
-	</section>
-	<section class="slide">
-		<h2>Serious citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
-	</section>
-	<section class="slide">
-		<h2>Code samples</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
-		</pre>
-	</section>
-	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</section>
-	<section class="slide" id="picture">
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="" class="cover">
 		<style>
-			#picture h2 {
-				color:#FFF;
-				}
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2 class="shout shrink">You can even shout this way</h2>
+		<img src="pictures/gaParam.png" class="cover">
 	</section>
 	<section class="slide">
-		<h2>Inner navigation</h2>
+		<img src="pictures/gaResult.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>欲蒐集的資料對應要下的 API 參數</h2>
 		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
+			<li>
+				瀏覽量: Google Analytics 有蒐集新聞 URL 對應的 Pageview
+				<ol>
+					<li>我們的目標: 取得所有 URL 含有 <code>/content/</code> 的 pageview</li>
+					<li>好工具: <a href="https://ga-dev-tools.appspot.com/query-explorer/">Query Exploer</a></li>
+				</ol>
+			</li>
+			<li class="next">Facebook 的 按讚數/分享數
+				<ol>
+					<li class="next">翻遍 Facebook for Developers 找不到，最後是問 Jaric 問到的</li>
+					<li class="next"><code>https://api.facebook.com/method/links.getStats?format=json&urls=</code></li>
+					<ol>
+						<li class="next">取得對應網址的 按讚數/分享數</li>
+					</ol>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/fbResult.png" class="cover">
+	</section>
+	<section class="slide sub-cover">
+		<h2>把資料彙集整理，讓大家都看得懂</h2>
+		<img src="pictures/collect.jpeg" class="cover">
+		<style>
+			.sub-cover h2 {
+				margin: 360px 0 0;
+				padding: 10px;
+				color: #3C3D40;
+				text-align: center;
+				font-size: 50px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>你不行這樣做</h2>
+		<ol>
+			<li class="next">從 Database 拿出一則一則的新聞，一一打 Google Analytics 與 Facebook API 在存回 Database</li>
+			<ol>
+				<li class="next">因為 Google APIs 是有額度限制的!</li>
+				<li class="next">一天最多接受 50,000 個 requests</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Greedy</h2>
+		<ol>
+			<li class="next">每小時打 Google Analytics API，取回所有相關 Pageview</li>
+			<li class="next">拿回來的 URL 再一一打 Facebook API 取回相關的 按讚與分享總數</li>
+			<li class="next">一一寫回 Database</li>
 		</ol>
 	</section>
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
+	<section class="slide">
+		<img src="pictures/greedy.jpg" class="cover">
 	</section>
-	<section class="slide" id="see-more">
-		<h2 class="shout">
-			<img src="pictures/logo.svg" alt="Shower logo">
-			<a href="https://github.com/shower/shower">See more on GitHub</a>
-		</h2>
+	<section class="slide">
+		<h2>兩個大問題</h2>
+		<ol>
+			<li class="next">資料準確度很難掌握...</li>
+			<ol>
+				<li class="next">每小時都重新跑過一次...</li>
+				<ol>
+					<li class="next">如何知道是同一批資料，要將數值加總?</li>
+					<li class="next">如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+				</ol>
+			</ol>
+		</ol>
 		<style>
-			#see-more h2 {
-				font-size:100px
-				}
-			#see-more img {
-				width:0.72em;
-				height:0.72em;
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/problem4.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>兩個大問題</h2>
+		<ol>
+			<li>資料準確度很難掌握...</li>
+			<ol>
+				<li>每小時都重新跑過一次...</li>
+				<ol>
+					<li>如何知道是同一批資料，要將數值加總?</li>
+					<li>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+				</ol>
+			</ol>
+			<li class="next">效能不佳！</li>
+			<ol>
+				<li class="next">頻繁訪問 Database</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/problem1.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>兩個大問題</h2>
+		<ol>
+			<li>資料準確度很難掌握...</li>
+			<ol>
+				<li>每小時都重新跑過一次...</li>
+				<ol>
+					<li>如何知道是同一批資料，要將數值加總?</li>
+					<li>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+				</ol>
+			</ol>
+			<li>效能不佳！</li>
+			<ol>
+				<li>頻繁訪問 Database</li>
+				<li class="next">頻繁打 Facebook API</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/problem2.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>兩個大問題</h2>
+		<ol>
+			<li>資料準確度很難掌握...</li>
+			<ol>
+				<li｀>每小時都重新跑過一次...</li>
+				<ol>
+					<li｀>如何知道是同一批資料，要將數值加總?</li>
+					<li｀>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+				</ol>
+			</ol>
+			<li>效能不佳！</li>
+			<ol>
+				<li>頻繁訪問 Database</li>
+				<li>頻繁打 Facebook API</li>
+				<li class="next">放太多東西進 Queue</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/problem3.jpg" class="cover">
+	</section>
+	<section class="slide sub-cover">
+		<h2>以不同的新聞 ID 為中心，資料自己跑過去跟他說我是你的數據</h2>
+		<img src="pictures/gather.jpeg" class="cover">
+		<style>
+			.sub-cover h2 {
+				margin: 400px 0 0;
+				padding: 10px;
+				color: #fff;
+				text-align: center;
+				font-size: 50px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>使用 MapReduce 解決問題</h2>
+		<ol>
+			<li class="next">什麼是 MapReduce ?</li>
+		</ol>
+		<p class="note next"><code>MapReduce</code> is a programming model and an associated implementation for processing and generating large data sets with a parallel, distributed algorithm on a cluster.<br/>-- From Wikipedia</p>
+	</section>
+	<section class="slide sub-cover">
+		<img src="pictures/mapreduce.jpg" class="cover">
+		<a href="http://kickstarthadoop.blogspot.tw/2011/04/word-count-hadoop-map-reduce-example.html">http://kickstarthadoop.blogspot.tw/2011/04/word-count-hadoop-map-reduce-example.html</a>
+		<style>
+			.sub-cover a {
+				position: absolute;
+				bottom: 5%;
+				font-size: 10px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>使用 MapReduce 解決問題</h2>
+		<ol>
+			<li>什麼是 MapReduce ?</li>
+			<ol>
+				<li class="next">Raw Data: 大量且複雜的資料，但有一致的格式存在</li>
+				<li class="next">Map: 把複雜但相同格式的資料整理成一致的型態</li>
+				<li class="next">Shuffle: Map 和 Reduce 之間溝通的協議</li>
+				<li class="next">Reduce: 將 Map 整理好的資料做計算，成為最後有用的資訊</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>如何 應用 到我們的需求中</h2>
+		<ol>
+			<li class="next">先單純只看 Google Analytics API 的回傳結果</li>
+			<ol>
+				<li class="next">Raw Data: Google Analytics API 的回傳結果</li>
+				<li class="next">Map: 把 Google Analytics API 回傳結果拆解成 newsId 對應 count</li>
+				<li class="next">Reduce: 把 Map 整理好的 count 做加總</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide sub-cover">
+		<img src="pictures/solutionMR.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>如何 實作 到我們的需求中</h2>
+		<ol>
+			<li class="next">Raw Data: Google Analytics API 的回傳結果</li>
+			<ol>
+				<li class="next">Command -> 一小時跑一次</li>
+			</ol>
+			<li class="next">Map: 把 Google Analytics API 回傳結果拆解成 newsId 對應 count</li>
+			<ol>
+				<li class="next">Job -> 平行處理</li>
+			</ol>
+			<li class="next">Reduce: 把 Map 整理好的 Count 做加總</li>
+			<ol>
+				<li class="next">Job -> 平行處理</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>如何 實作 到我們的需求中</h2>
+		<ol>
+			<li class="next">Map 和 Reduce 溝通的工具</li>
+			<ol>
+				<li class="next">Cache</li>
+				<li class="next">Reduce 在下一個小時才會拿資料出來做事情</li>
+			</ol>
+			<li class="next">如何做 Shuffle ?</li>
+			<ol>
+				<li class="next">用 newsId 前三個數字 (prefix)，轉成 hash code 後放入 Cache (list 型態)，可以確保相同 newsId 會被 shuffle 到同一個 list</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide sub-cover">
+		<h2>從架構面了解為什麼 MapReduce 解決了兩大問題</h2>
+		<img src="pictures/arch.jpg" class="cover">
+		<style>
+			.sub-cover h2 {
+				margin: 360px 0 0;
+				padding: 10px;
+				color: #fff;
+				text-align: center;
+				font-size: 50px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>重新檢視兩個大問題</h2>
+		<ol>
+			<li>資料準確度很難掌握...</li>
+			<ol>
+				<li>每小時都重新跑過一次...</li>
+				<ol>
+					<li>如何知道是同一批資料，要將數值加總?</li>
+					<li>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+				</ol>
+			</ol>
+			<li>效能不佳！</li>
+			<ol>
+				<li>頻繁訪問 Database</li>
+				<li>頻繁打 Facebook API</li>
+				<li>放太多東西進 Queue</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/solution.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>先看資料準確度問題如何解決</h2>
+		<ol>
+			<li class="next">Map 與 Reduce 會檢視同一個 Cache 內容:</li>
+			<ol>
+				<li class="next"><code>{"receiveTime":"20160502160001","reduced":false}</code></li>
+				<li class="next">Map 靠 <code>reduced</code> 決定是否寫入新的一批資料到 Cache，並更新 <code>receiveTime</code> 讓 <mark>下個小時</mark> 的 Reduce 找到資料</li>
+				<li class="next">Reduce 靠 <code>receiveTime</code> 找到 <mark>上個小時</mark> 在 Cache 的同一批所有資料</li>
+			</ol>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/solution.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>頻繁訪問 Database 的問題</h2>
+		<ol>
+			<li class="next">同一批資料都在 Cache 中，經由 <mark>Shuffle</mark> 可以確保同一個 newsId 會在相同的 list</li>
+			<li class="next">無需 select DB，就可以取得同一批的所有資料加總</li>
+			<li class="next">使用 <code>insert on update</code> 一次寫入 <mark>100</mark> 筆資料</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/shuffle.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>頻繁打 Facebook API 與 太多東西在 queue 中的問題</h2>
+		<ol>
+			<li class="next">用 <code>where in</code> 找到對應的 newsId 後，確定有 newsId 的才放進 queue</li>
+			<li class="next"><code>https://api.facebook.com/method/links.getStats?format=json&urls=</code> 可以放很多 URLs，一次查詢 <mark>1000</mark> 筆</li>
+		</ol>
+		<p class="next note">這兩個跟 MapReduce 沒什麼關係...</p>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/mutipleFB.png" class="cover">
+	</section>
+	<section class="slide sub-cover">
+		<h2>實際看一次在 laravel 中實做的架構</h2>
+		<img src="pictures/solution.jpg" class="cover">
+		<style>
+			.sub-cover h2 {
+				margin: 400px 0 0;
+				padding: 10px;
+				color: #000;
+				text-align: center;
+				font-size: 50px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>結果</h2>
+		<ol>
+			<li>測試新聞筆數: 261810</li>
+			<li>Cache 筆數: 606 / 抽樣的 List 筆數: 174</li>
+			<li>Time 為測試期間紀錄到最大的值</li>
+		</ol>
+		<table class="next">
+			<tr>
+				<th scope="col">Component</th>
+				<th>Original Time</th>
+				<th>Time</th>
+			</tr>
+			<tr>
+				<td>AnalysisReceiver (Command)</td>
+				<td>未記錄</td>
+				<td>123.54229807854 s</a></td>
+			</tr>
+			<tr>
+				<td>ParseGoogleAnalyticsMapper (Job)</td>
+				<td>將近 60 s</td>
+				<td>0.11361789703369 s</a></td>
+			</tr>
+			<tr>
+				<td>ParseFacebookMapper (Job)</td>
+				<td>將近 60 s</td>
+				<td>3.152951002121 s</a></td>
+			</tr>
+			<tr>
+				<td>AnalysisReducer (Job)</td>
+				<td>原本沒有此部分</td>
+				<td>0.37646985054016</a></td>
+			</tr>
+		</table>
+	</section>
+	<section class="slide" id="end">
+		<h2>Q & A</h2>
+		<img src="pictures/end.jpg" alt="" class="cover">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#end h2 {
+				margin: 350px 0 0;
+				padding: 10px;
+				color:#DB2F13;
+				text-align:right;
+				font-size:60px;
 				}
 		</style>
 	</section>
