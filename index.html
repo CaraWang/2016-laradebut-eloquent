@@ -55,7 +55,7 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>有沒有一目了然的方式讓 新聞 的瀏覽量和社群分享成效可以被分析</h2>
+		<h2>新聞的瀏覽量和社群分享成效分析</h2>
 		<ol>
 			<li class="next">可以整合 Google Analytics 的數據嗎?</li>
 			<li class="next">Facebook 的 讚數/分享數 可以取得嗎?</li>
@@ -84,7 +84,7 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>欲蒐集的資料對應要下的 API 參數</h2>
+		<h2>分析所需要蒐集的資料</h2>
 		<ol>
 			<li class="next">
 				瀏覽量: Google Analytics 有蒐集新聞 URL 對應的 Pageview
@@ -110,7 +110,7 @@
 		<img src="pictures/gaResult.png" class="cover">
 	</section>
 	<section class="slide">
-		<h2>欲蒐集的資料對應要下的 API 參數</h2>
+		<h2>分析所需要蒐集的資料</h2>
 		<ol>
 			<li>
 				瀏覽量: Google Analytics 有蒐集新聞 URL 對應的 Pageview
@@ -119,7 +119,7 @@
 					<li>好工具: <a href="https://ga-dev-tools.appspot.com/query-explorer/">Query Exploer</a></li>
 				</ol>
 			</li>
-			<li class="next">Facebook 的 按讚數/分享數
+			<li class="next">新聞連結對應的 Facebook 按讚數與分享數
 				<ol>
 					<li class="next">翻遍 Facebook for Developers 找不到，最後是問 Jaric 問到的</li>
 					<li class="next"><code>https://api.facebook.com/method/links.getStats?format=json&urls=</code></li>
@@ -162,6 +162,10 @@
 				<li class="next">因為 Google APIs 是有額度限制的!</li>
 				<li class="next">一天最多接受 50,000 個 requests</li>
 			</ol>
+			<li class="next">Sequential Process</li>
+			<ol>
+				<li class="next">PM 可以接受不即時的資料，但一小時應該更新一次</li>
+			</ol>
 		</ol>
 		<style>
 			ol ol {
@@ -189,10 +193,6 @@
 			<li class="next">資料準確度很難掌握...</li>
 			<ol>
 				<li class="next">每小時都重新跑過一次...</li>
-				<ol>
-					<li class="next">如何知道是同一批資料，要將數值加總?</li>
-					<li class="next">如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
-				</ol>
 			</ol>
 		</ol>
 		<style>
@@ -214,8 +214,8 @@
 			<ol>
 				<li>每小時都重新跑過一次...</li>
 				<ol>
-					<li>如何知道是同一批資料，要將數值加總?</li>
-					<li>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+					<li class="next">如何知道是同一批資料，要將數值加總?</li>
+					<li class="next">如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
 				</ol>
 			</ol>
 			<li class="next">效能不佳！</li>
@@ -269,10 +269,10 @@
 		<ol>
 			<li>資料準確度很難掌握...</li>
 			<ol>
-				<li｀>每小時都重新跑過一次...</li>
+				<li>每小時都重新跑過一次...</li>
 				<ol>
-					<li｀>如何知道是同一批資料，要將數值加總?</li>
-					<li｀>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
+					<li>如何知道是同一批資料，要將數值加總?</li>
+					<li>如何知道不是同一批資料，要將新數值覆蓋舊的?</li>
 				</ol>
 			</ol>
 			<li>效能不佳！</li>
@@ -517,19 +517,6 @@
 	<section class="slide">
 		<img src="pictures/mutipleFB.png" class="cover">
 	</section>
-	<section class="slide sub-cover">
-		<h2>實際看一次在 laravel 中實做的架構</h2>
-		<img src="pictures/solution.jpg" class="cover">
-		<style>
-			.sub-cover h2 {
-				margin: 400px 0 0;
-				padding: 10px;
-				color: #000;
-				text-align: center;
-				font-size: 50px;
-			}
-		</style>
-	</section>
 	<section class="slide">
 		<h2>結果</h2>
 		<ol>
@@ -565,6 +552,25 @@
 			</tr>
 		</table>
 	</section>
+	<section class="slide sub-cover">
+		<h2>實際看一次在 laravel 中實做的架構</h2>
+		<img src="pictures/solution.jpg" class="cover">
+		<style>
+			.sub-cover h2 {
+				margin: 400px 0 0;
+				padding: 10px;
+				color: #000;
+				text-align: center;
+				font-size: 50px;
+			}
+		</style>
+	</section>
+	<section class="slide sub-cover">
+		<img src="pictures/mwebQE.png" class="cover">
+	</section>
+	<section class="slide sub-cover">
+		<img src="pictures/appQE.png" class="cover">
+	</section>
 	<section class="slide" id="end">
 		<h2>Q & A</h2>
 		<img src="pictures/end.jpg" alt="" class="cover">
@@ -583,7 +589,7 @@
 		</style>
 	</section>
 	<p class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
+		<a href="https://github.com/CaraWang/2016-talk-cnyes-news-analytics">Fork me on GitHub</a>
 	</p>
 	<!--
 		To hide progress bar from entire presentation
