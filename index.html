@@ -414,6 +414,9 @@
 			}
 		</style>
 	</section>
+	<section class="slide">
+		<img src="pictures/shuffle.png" class="cover">
+	</section>
 	<section class="slide sub-cover">
 		<h2>從架構面了解為什麼 MapReduce 解決了兩大問題</h2>
 		<img src="pictures/arch.jpg" class="cover">
@@ -501,7 +504,7 @@
 	<section class="slide">
 		<h2>頻繁打 Facebook API 與 太多東西在 queue 中的問題</h2>
 		<ol>
-			<li class="next">用 <code>where in</code> 找到對應的 newsId 後，確定有 newsId 的才放進 queue</li>
+			<li class="next">整理 Raw Data 時，使用 <code>where in</code> 一次做 query: 找到對應的 newsId 後，確保該 URL 對應的新聞真的存在，才放進 queue</li>
 			<li class="next"><code>https://api.facebook.com/method/links.getStats?format=json&urls=</code> 可以放很多 URLs，一次查詢 <mark>1000</mark> 筆</li>
 		</ol>
 		<p class="next note">這兩個跟 MapReduce 沒什麼關係...</p>
@@ -516,6 +519,12 @@
 	</section>
 	<section class="slide">
 		<img src="pictures/mutipleFB.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>結果</h2>
+		<ol>
+			<li>準確度: 與 Google Analytics 後台列出的數字一致</li>
+		</ol>
 	</section>
 	<section class="slide">
 		<h2>結果</h2>
