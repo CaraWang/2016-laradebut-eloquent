@@ -546,12 +546,12 @@
 	<section class="slide">
 		<h2>搜尋建議</h2>
 		<pre class="next">
-			<code>POST <mark>_suggest</mark></code>
+			<code>POST _suggest</code>
 			<code>{</code>
 			<code>    "suggest" : {</code>
-			<code>        "text" : "台",</code>
-			<code>        "completion" : {</code>
-			<code>            "field" : "name",</code>
+			<code>        "text" : <mark>"台"</mark>,</code>
+			<code>        "completion":{</code>
+			<code>            "field" : "keywordForAutoComplete",</code>
 			<code>            "size": 10</code>
 			<code>        }</code>
 			<code>    }</code>
@@ -562,6 +562,9 @@
 				font-size: 1em;
 			}
 		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/suggestion.png" class="cover">
 	</section>
 	<section class="slide">
 		<h2>相關新聞</h2>
@@ -581,39 +584,6 @@
 	</section>
 	<section class="slide">
 		<img src="pictures/relatedNews.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>新聞列表</h2>
-		<ol>
-			<li></li>
-		</ol>
-		<table class="next">
-			<tr>
-				<th scope="col">API</th>
-				<th>From Model</th>
-				<th>From Elasticsearch</th>
-			</tr>
-			<tr>
-				<td>/api/v1/news/headline</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>/api/v1/news/24h</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>/api/v1/news/popular</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>/api/v1/news/category/131</td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
 	</section>
 	<section class="slide sub-cover">
 		<h2>看 code 時間</h2>
