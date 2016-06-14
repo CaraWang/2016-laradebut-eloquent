@@ -73,7 +73,6 @@
 						把資料寫入 Elasticsearch
 						<ol>
 							<li class="next">Analyzer</li>
-							<li class="next">Inverted Index</li>
 						</ol>
 					</li>
 			</li>
@@ -89,6 +88,42 @@
 	</section>
 	<section class="slide">
 		<img src="pictures/analyzer.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>要有資料</h2>
+		<ol>
+			<li>
+				所有與新聞相關的資料都要放入 cnYes 的 Elasticsearch
+				<ol>
+					<li>新聞本身</li>
+					<li>新聞圖片/新聞數據/新聞類別/...</li>
+					<li>總共 7 張 Table</li>
+				</ol>
+			</li>
+			<li>
+				Indexing
+				<ol>
+					<li>規劃資料結構，做 Mapping</li>
+					<li>
+						把資料寫入 Elasticsearch
+						<ol>
+							<li>Analyzer</li>
+							<li class="next">Inverted Index</li>
+						</ol>
+					</li>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/invertedIndex.png" class="cover">
 	</section>
 	<section class="slide">
 		<h2>決定資料結構: Mapping</h2>
@@ -219,7 +254,7 @@
 			<code>         "must": [</code>
 			<code>            {</code>
 			<code>               "term": {</code>
-			<code>                  <mark>"status": "actived"</mark></code>
+			<code>                  <mark>"authorName": "王思平"</mark></code>
 			<code>               }</code>
 			<code>            }</code>
 			<code>         ]</code>
@@ -352,6 +387,24 @@
 			.slide pre code {
 				font-size: 0.5em;
 				line-height: 1.8;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Query DSL - 全文搜尋</h2>
+		<pre class="next">
+			<code>post /_search</code>
+			<code>{</code>
+			<code>   "query": {</code>
+			<code>      "match": {</code>
+			<code>         "_all": "<mark>2330</mark>"</code>
+			<code>      }</code>
+			<code>   }</code>
+			<code>}</code>
+		</pre>
+		<style>
+			.slide pre code {
+				font-size: 1em;
 			}
 		</style>
 	</section>
