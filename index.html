@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>cnYES 如何使用 Elasticsearch</title>
+	<title>API Survey #2 - Firebase Realtime Database</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +9,20 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1>cnYES 如何使用 Elasticsearch - Cara Wang</h1>
-		<p>不只是新聞搜尋引擎</p>
+		<h1>API Survey #2 - Firebase Realtime Database</h1>
+		<p>Cara Wang &lt;caraw@cnyes.com&gt;</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2>cnYES 如何使用 Elasticsearch</h2>
-		<h3>不只是新聞搜尋引擎</h3>
-		<p>Cara Wang &lt;caraw@cnyes.com&gt;</p>
-		<img src="pictures/cover.jpeg" alt="" class="cover">
-		<!--
-			To apply styles to the certain slides
-			set slide ID to get needed elements
-			-->
+		<h2>API Survey #2</h2>
+		<h3>Firebase Realtime Database</h3>
+		<div class="author">
+			<p>@author Cara Wang &lt;caraw@cnyes.com&gt;</p>
+			<p>@since 2016/11/24</p>
+		</div>
+		<img src="pictures/cover.jpeg" class="cover">
 		<style>
 			#cover h2 {
-				margin: 80px 0 0;
+				margin: 14% 0 0;
 				padding: 10px;
 				color:#f0fcfe;
 				text-align:center;
@@ -34,19 +33,22 @@
 				border-bottom-style: solid;
 				}
 			#cover h3 {
-				margin:30px 0 0;
+				margin: 18% 0 0;
 				color:#f0fcfe;
 				text-align:center;
 				font-size:30px;
 				}
-			#cover p {
-				margin:10px 0 0;
-				text-align:center;
+			.author {
+				margin:10px 230px 0;
 				color:#f0fcfe;
 				font-style:italic;
 				font-size:20px;
 				}
-				#cover p a {
+				.author p {
+					line-height: 10px;
+					text-align:left;
+					}
+				.author p a {
 					color:#f0fcfe;
 					}
 			#cover img {
@@ -55,272 +57,154 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>要有資料</h2>
+		<h2>The Goal of API Survey</h2>
 		<ol>
-			<li class="next">
-				所有與新聞相關的資料都要放入 cnYes 的 Elasticsearch
+			<li class="next">Analyze the design of public API ( compare to the principle of RESTful API)
 				<ol>
-					<li class="next">新聞本身</li>
-					<li class="next">新聞圖片/新聞數據/新聞類別/...</li>
-					<li class="next">總共 7 張 Table</li>
+					<li class="next">Request path / Response format, etc…</li>
 				</ol>
 			</li>
-			<li class="next">
-				Indexing
+			<li class="next">Analyze the pros. and cros.</li>
+			<li class="next">Playground (optional)</li>
+			<li class="next">Feedback to our API design and implementation</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>What is RESTful API ?</h2>
+		<ol>
+			<li class="next">符合 REST 架構設計的 API</li>
+			<li class="next">符合: 七大目標所衍伸出來的五大特徵</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li class="next"><a href="http://whatisrest.com/">http://whatisrest.com/</a></li>
+			<li class="next">The 7 goals for implement RESTful API:
 				<ol>
-					<li class="next">規劃資料結構，做 Mapping</li>
+					<li class="next"><mark>Simplicity</mark></li>
+					<li class="next">Scalability</li>
+					<li class="next">Reliability</li>
+					<li class="next">Performance</li>
+					<li class="next">Modifiability</li>
+					<li class="next">Visibility</li>
+					<li class="next">Portability</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>
+				<mark>Simplicity</mark>
+				<ol>
+					<li class="next">分工，各個單元的複雜度要低</li>
+				</ol>
+			</li>
+			<li>
+				Scalability
+				<ol>
+					<li class="next">可以應付服務需求量暴增的情況</li>
+				</ol>
+			</li>
+			<li>
+				Reliability
+				<ol>
+					<li class="next">接受架構中部分損壞而不影響服務</li>
+				</ol>
+			</li>
+			<li>
+				Performance
+				<ol>
+					<li class="next">不受網路傳輸影響回傳結果</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>
+				Modifiability
+				<ol>
+					<li class="next">對部分架構做更動而不影響服務</li>
+				</ol>
+			</li>
+			<li>Visibility
+				<ol>
+					<li class="next">在傳輸過程中也可以看出所請求的服務是什麼</li>
+				</ol>
+			</li>
+			<li>
+				Portability
+				<ol>
+					<li class="next">可以更換部署地點而不影響服務</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li class="next">The 5 constraints (or characteristics):
+				<ol>
 					<li class="next">
-						把資料寫入 Elasticsearch
-						<ol>
-							<li class="next">Analyzer</li>
+						Client-Server
+						<ol class="next">
+							<li>Scalability</li>
+							<li>Modifiability</li>
 						</ol>
 					</li>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyzer.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>要有資料</h2>
-		<ol>
-			<li>
-				所有與新聞相關的資料都要放入 cnYes 的 Elasticsearch
-				<ol>
-					<li>新聞本身</li>
-					<li>新聞圖片/新聞數據/新聞類別/...</li>
-					<li>總共 7 張 Table</li>
-				</ol>
-			</li>
-			<li>
-				Indexing
-				<ol>
-					<li>規劃資料結構，做 Mapping</li>
-					<li>
-						把資料寫入 Elasticsearch
-						<ol>
-							<li>Analyzer</li>
-							<li class="next">Inverted Index</li>
+					<li class="next">
+						Layered System
+						<ol class="next">
+							<li>Scalability</li>
+							<li>Modifiability</li>
+							<li>Visibility</li>
+							<li><mark>Simplicity</mark></li>
 						</ol>
 					</li>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<img src="pictures/invertedIndex.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>決定資料結構: Mapping</h2>
-		<ol>
-			<li class="next">搜尋先覺: 一切以 搜尋 好寫為優先</li>
-			<li class="next"><mark>扁平化</mark> 的資料呈現</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<h2>決定資料結構: Mapping</h2>
-		<ol>
-			<li class="next">例子 1: 不扁平的資料呈現 - 資料</li>
-		</ol>
-		<pre class="next">
-			<code>{</code>
-			<code>	"newsId": 1,</code>
-			<code>	"<mark>author</mark>": {</code>
-			<code>		"code": "caraw",</code>
-			<code>		"name": "Cara Wang",</code>
-			<code>		"position": "BE"</code>
-			<code>	},</code>
-			<code>	"status": "actived"</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 0.8em;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>決定資料結構: Mapping</h2>
-		<ol>
-			<li>例子 1: 不扁平的資料呈現 - 搜尋</li>
-		</ol>
-		<pre class="next">
-			<code>POST /_search</code>
-			<code>{ "query": { "filtered": { "filter": { "bool": { "must": [{</code>
-			<code>   "term": {</code>
-			<code>      <mark>"status": "actived"</mark></code>
-			<code>   }},{</code>
-			<code>   "nested": {</code>
-			<code>      "path": "author",</code>
-			<code>      "query": {</code>
-			<code>         "bool": {</code>
-			<code>            "must": [</code>
-			<code>               {</code>
-			<code>                  "match": {</code>
-			<code>                     "<mark>author.position": "BE"</mark></code>
-			<code>                  }</code>
-			<code>               }]}}}</code>
-			<code>}]}}}}}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 0.5em;
-				line-height: 1.8;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>決定資料結構: Mapping</h2>
-		<ol>
-			<li>例子 2: 扁平的資料呈現 - 資料</li>
-		</ol>
-		<pre class="next">
-			<code>{</code>
-			<code>	"newsId": 1,</code>
-			<code>	<mark>"authorCode": "caraw"</mark>,</code>
-			<code>	<mark>"authorName": "Cara Wang"</mark>,</code>
-			<code>	<mark>"authorPosition": "BE"</mark></code>
-			<code>	"status": "actived"</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 1em;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>決定資料結構: Mapping</h2>
-		<ol>
-			<li>例子 2: 扁平的資料呈現 - 搜尋</li>
-		</ol>
-		<pre class="next">
-			<code>{</code>
-			<code>   "query": {</code>
-			<code>      "bool": {</code>
-			<code>         "must": [</code>
-			<code>            {</code>
-			<code>               "term": {</code>
-			<code>                  <mark>"status": "actived"</mark></code>
-			<code>               }</code>
-			<code>            },</code>
-			<code>            {</code>
-			<code>               "term": {</code>
-			<code>                  <mark>"authorPosition": "BE"</mark></code>
-			<code>               }</code>
-			<code>            }</code>
-			<code>         ]</code>
-			<code>      }</code>
-			<code>   }</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 0.5em;
-				line-height: 1.8;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>一些關於 Mapping 的小事情</h2>
-		<ol>
-			<li class="next">扁不扁平看開發需求</li>
-			<li class="next">
-				特定欄位需不需要做<mark>分析</mark>看搜尋需求
-				<ol>
-					<li class="next">name/code/position 需要被<mark>分析</mark>嗎?</li>
-				</ol>
-			</li>
-		</ol>
-		<pre class="next">
-			<code>{</code>
-			<code>   "query": {</code>
-			<code>      "bool": {</code>
-			<code>         "must": [</code>
-			<code>            {</code>
-			<code>               "term": {</code>
-			<code>                  <mark>"authorName": "王思平"</mark></code>
-			<code>               }</code>
-			<code>            }</code>
-			<code>         ]</code>
-			<code>      }</code>
-			<code>   }</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 0.5em;
-				line-height: 1.8;
-			}
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>一些關於 Mapping 的小事情</h2>
-		<ol>
-			<li>扁不扁平看開發需求</li>
-			<li>特定欄位需不需要做<mark>分析</mark>看搜尋需求
-				<ol>
-					<li>name/code/position 需要被<mark>分析</mark>嗎?</li>
-				</ol>
-			</li>
-			<li class="next">搜尋先覺是否都要屏棄 Nested Type?</li>
-			<ol>
-				<li class="next">Nested 內的屬性是有關聯的</li>
-				<li class="next">
-					例子: 把姓氏跟名子分開存時，兩者便存在強烈關聯
-					<ol>
-						<li class="next"><code>王思平 !== 陳思平</code></li>
-					</ol>
-				</li>
-				<li class="next"><a href="http://joelabrahamsson.com/elasticsearch-nested-mapping-and-filter/">http://joelabrahamsson.com/elasticsearch-nested-mapping-and-filter/</a></li>
-			</ol>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>一些關於 Indexing 的小事情</h2>
-		<ol>
-			<li class="next">
-				已經上線的資料
-				<ol>
-					<li class="next">不!不!不!</li>
-					<li class="next">能!能!能!</li>
-					<li class="next">砍!砍!砍!</li>
-				</ol>
-			</li>
-			<li class="next">
-				如何在重新做 Indexing 時不影響線上搜尋運作？
-				<ol>
-					<li class="next">關鍵: 讓外面怎麼看都是同一個 Index</li>
-					<li class="next">解決: 建立 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html">Alias</a></li>
 				</ol>
 			</li>
 		</ol>
@@ -334,137 +218,31 @@
 		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/migrate1.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/migrate2.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/migrate3.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/migrate4.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/migrate5.jpg" class="cover">
-	</section>
-	<section class="slide sub-cover">
-		<h2>開始搜尋囉！</h2>
-		<img src="pictures/search.jpg" class="cover">
-		<style>
-			.sub-cover h2 {
-				margin: 200px 0 0;
-				padding: 10px;
-				color: #fff;
-				text-align: center;
-				font-size: 50px;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Query DSL</h2>
-		<pre class="next">
-			<code>{</code>
-			<code>   "query": {</code>
-			<code>      "bool": {</code>
-			<code>         "must": [</code>
-			<code>            {</code>
-			<code>               "term": {</code>
-			<code>                  <mark>"status": "actived"</mark></code>
-			<code>               }</code>
-			<code>            },</code>
-			<code>            {</code>
-			<code>               "term": {</code>
-			<code>                  <mark>"authorPosition": "BE"</mark></code>
-			<code>               }</code>
-			<code>            }</code>
-			<code>         ]</code>
-			<code>      }</code>
-			<code>   }</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 0.5em;
-				line-height: 1.8;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
-		<pre class="next">
-			<code>post /_search</code>
-			<code>{</code>
-			<code>   "query": {</code>
-			<code>      "match": {</code>
-			<code>         "_all": "<mark>2330</mark>"</code>
-			<code>      }</code>
-			<code>   }</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 1em;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
-		<pre class="next">
-			<code>{</code>
-			<code>   "query": {</code>
-			<code>      "filtered": {</code>
-			<code>         "query": {</code>
-			<code>            "multi_match": {</code>
-			<code>               "query": "<mark>2330</mark>",</code>
-			<code>               "fields": ["title","content"]</code>
-			<code>            }</code>
-			<code>         }</code>
-			<code>      }</code>
-			<code>   }</code>
-			<code>}</code>
-		</pre>
-		<style>
-			.slide pre code {
-				font-size: 1em;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
+		<h2>Review: What is REST ?</h2>
 		<ol>
-			<li class="next">改搜尋<mark>台積電</mark>試試看</li>
-			<li class="next">中文斷詞的難處</li>
-			<li class="next">使用<mark>_analyzer</mark>測試斷詞</li>
-		</ol>
-		<pre class="next">
-			<code>curl -XGET localhost:9200/sharing/_analyze -d '台積電'</code>
-		</pre>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
-		<ol>
-			<li>改搜尋<mark>台積電</mark>試試看</li>
-			<li>中文斷詞的難處</li>
-			<li>使用<mark>_analyzer</mark>測試斷詞</li>
-			<li class="next">
-				解決中文斷詞: 更改分析方式
+			<li>The 5 constraints (or characteristics):
 				<ol>
-					<li class="next">使用<mark>IK Analysis for Elasticsearch</mark></li>
-					<li class="next"><a href="https://github.com/medcl/elasticsearch-analysis-ik">https://github.com/medcl/elasticsearch-analysis-ik</a></li>
+					<li class="next">
+						Interface / Uniform Contract
+						<ol class="next">
+							<li><mark>Simplicity</makr></li>
+							<li>Modifiability</li>
+							<li>Visibility</li>
+						</ol>
+					</li>
+					<li class="next">
+						Stateless
+						<ol class="next">
+							<li>Scalability</li>
+							<li>Modifiability</li>
+							<li>Visibility</li>
+							<li>Reliability</li>
+						</ol>
+					</li>
 				</ol>
 			</li>
 		</ol>
-		<pre class="next">
-			<code>curl -XGET localhost:9200/sharing/_analyze?tokenizer=ik_smart -d '台積電'</code>
-		</pre>
 		<style>
-			.slide pre code {
-				font-size: 0.8em;
-			}
 			ol ol {
 				list-style-type: disc;
 			}
@@ -474,214 +252,324 @@
 		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/analyze1.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
+		<h2>Review: What is REST ?</h2>
 		<ol>
-			<li class="next">改搜尋<mark>林全</mark>試試看</li>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze3.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze2.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
-		<ol>
-			<li>改搜尋<mark>林全</mark>試試看</li>
-			<li>
-				使用<mark>_analyzer</mark>測試斷詞
+			<li>The 5 constraints (or characteristics):
 				<ol>
-					<li>地區性的慣用詞</li>
+					<li class="next">
+						Cache
+						<ol class="next">
+							<li>Scalability</li>
+							<li>Performance</li>
+						</ol>
+					</li>
 				</ol>
 			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>The Effection to the API Design</h2>
+		<h3 class="next">Interface / Uniform Contract</h3>
+		<ol>
+			<li class="next">HTTP Varbs</li>
+		</ol>
+		<table class="next">
+			<tr>
+				<th scope="col">Method</th>
+				<th>Verb</th>
+				<th>Description</th>
+			</tr>
+			<tr class="next">
+				<td>GET</td>
+				<td>Read</td>
+				<td>Read one or more specific resource(s)</td>
+			</tr>
+			<tr class="next">
+				<td>POST</td>
+				<td>Create</td>
+				<td>Create one or more specific resource(s)</td>
+			</tr>
+			<tr class="next">
+				<td>PUT / PATCH</td>
+				<td>Update</td>
+				<td>Update one or more specific resource(s)</td>
+			</tr>
+			<tr class="next">
+				<td>DELETE</td>
+				<td>Remove</td>
+				<td>Remove one or more specific resource(s)</td>
+			</tr>
+		</table>
+	</section>
+	<section class="slide">
+		<h2>The Effection to the API Design</h2>
+		<h3>Interface / Uniform Contract</h3>
+		<ol>
+			<li class="next">Resource Name</li>
 		</ol>
 		<pre>
-			<code>curl -XGET localhost:9200/sharing/_analyze?tokenizer=ik_smart -d '林全'</code>
+			<code class="next">GET /users</code>
+			<code class="next">GET /user<mark>s</mark>/1</code>
+			<code class="next">POST /news</code>
+			<code class="next">PUT /news/1</code>
+			<code class="next">DELETE /users/1/news/1 <span class="next">??</span></code>
+			<code class="next">DELETE /news/1 # Simplicity</code>
+			<code class="next">DELETE /news/1,2,3</code>
 		</pre>
 		<style>
 			.slide pre code {
 				font-size: 0.8em;
 			}
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Query DSL - 全文搜尋</h2>
+		<h2>The Effection to the API Design</h2>
+		<h3>Interface / Uniform Contract</h3>
 		<ol>
-			<li>改搜尋<mark>林全</mark>試試看</li>
-			<li>使用<mark>_analyzer</mark>測試斷詞</li>
-			<ol>
-				<li>地區性的慣用詞</li>
-				<li class="next">符合使用者搜尋習慣的 <mark>字典檔</mark></li>
-				<li class="next">ik 可以設定自動更新字典檔，無需重啟 Elasticsearch Server</li>
-			</ol>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze4.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<h2>一些關於 Query DSL 的小事</h2>
-		<ol>
-			<li class="next">如何決定哪些詞要被加到字典檔?</mark></li>
-			<ol>
-				<li class="next">Google Analytics 站內搜尋</li>
-				<li class="next">搜尋後停留的時間極短，或搜尋離開 <mark>100%</mark></li>
-				<li class="next">但要小心，不一定是加字典檔就能解決</li>
-			</ol>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze5.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze6.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<h2>一些關於 Query DSL 的小事</h2>
-		<ol>
-			<li>如何決定哪些詞要被加到字典檔？</mark></li>
-			<ol>
-				<li>Google Analytics 站內搜尋</li>
-				<li>搜尋後停留的時間極短，或搜尋離開 <mark>100%</mark></li>
-				<li>但要小心，不一定是加字典檔就能解決</li>
-				<li class="next">搜尋建議</li>
-			</ol>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/analyze7.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>一些關於 Query DSL 的小事</h2>
-		<ol>
-			<li>
-				如何決定哪些詞要被加到字典檔？
+			<li class="next">
+				HTTP Response
 				<ol>
-					<li>Google Analytics 站內搜尋</li>
-					<li>搜尋後停留的時間極短，或搜尋離開 <mark>100%</mark></li>
-					<li>但要小心，不一定是加字典檔就能解決</li>
-					<li>搜尋建議</li>
-					<li class="next">搜尋優化沒有結束的一天...</li>
+					<li class="next">2xx: Success</li>
+					<li class="next">3xx: Redirection</li>
+					<li class="next">4xx: Client Errors</li>
+					<li class="next">5xx: Service Errors</li>
+				</ol>
+			</li>
+			<li class="next"><a href="http://www.restapitutorial.com/httpstatuscodes.html">http://www.restapitutorial.com/httpstatuscodes.html</a></li>
+		</ol>
+	</section>
+	<section class="slide">
+		<h2>The Effection to the API Design</h2>
+		<h3>Interface / Uniform Contract</h3>
+		<ol>
+			<li class="next">
+				Response Payload
+				<ol>
+					<li class="next">Error Message</li>
+					<li class="next">Pagination</li>
+					<li class="next">...</li>
 				</ol>
 			</li>
 		</ol>
 	</section>
-	<section class="slide sub-cover">
-		<h2>不只是搜尋引擎！</h2>
-		<img src="pictures/more.jpg" class="cover">
-		<style>
-			.sub-cover h2 {
-				margin: 400px 0 0;
-				padding: 10px;
-				color: #fff;
-				text-align: center;
-				font-size: 50px;
-			}
-		</style>
+	<section class="slide">
+		<h2>The Effection to the API Design</h2>
+		<ol class="next"><li>Idempotent: <span class="next">Can do it over and over again without causing different results</span></li></ol>
+		<table class="next">
+			<tr>
+				<th scope="col">Method</th>
+				<th>Idempotent</th>
+			</tr>
+			<tr class="next">
+				<td>GET</td>
+				<td>Yes</td>
+			</tr>
+			<tr class="next">
+				<td>POST</td>
+				<td>No</td>
+			</tr>
+			<tr class="next">
+				<td>PUT</td>
+				<td>Yes</td>
+			</tr>
+			<tr class="next">
+				<td>PATCH</td>
+				<td>No</td>
+			</tr>
+			<tr class="next">
+				<td>DELETE</td>
+				<td>Yes</td>
+			</tr>
+		</table>
+		<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html</a>
 	</section>
 	<section class="slide">
-		<h2>搜尋建議</h2>
+		<h2>Firebase</h2>
+		<h3 class="next">Founded on Apr 6, 2011</h3>
+		<img class="cover next" src="pictures/acquiredByGoogle.png">
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
+		<h3 class="next">HTTP Method</h3>
+		<table class="next">
+			<tr>
+				<th scope="col">Method</th>
+				<th>Firebase</th>
+				<th>RESTful API</th>
+			</tr>
+			<tr class="next">
+				<td>GET</td>
+				<td>Reading Data</td>
+				<td>Read</td>
+			</tr>
+			<tr class="next">
+				<td>POST</td>
+				<td><mark>Pushing Data</mark></td>
+				<td>Create</td>
+			</tr>
+			<tr class="next">
+				<td>PUT</td>
+				<td><mark>Writing Data</mark></td>
+				<td>Update</td>
+			</tr>
+			<tr class="next">
+				<td>PATCH</td>
+				<td>Updating Data</td>
+				<td>Update</td>
+			</tr>
+			<tr class="next">
+				<td>DELETE</td>
+				<td>Removing Data</td>
+				<td>Remove</td>
+			</tr>
+		</table>
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
+		<ol>
+			<li class="next">Resource Name</li>
+		</ol>
 		<pre class="next">
-			<code>POST _suggest</code>
-			<code>{</code>
-			<code>    "suggest" : {</code>
-			<code>        "text" : <mark>"台"</mark>,</code>
-			<code>        "completion":{</code>
-			<code>            "field" : "keywordForAutoComplete",</code>
-			<code>            "size": 10</code>
-			<code>        }</code>
-			<code>    }</code>
-			<code>}</code>
+			<code>https://{your-project-name}.firebaseio.com</code>
+			<code>/{your-firebase-model-lv-1}</code>
+			<code>/{your-firebase-model-lv-2}</code>
+			<code>...</code>
+			<code>.json</code>
 		</pre>
-		<style>
-			.slide pre code {
-				font-size: 1em;
-			}
-		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/suggestion.png" class="cover">
+		<img src="pictures/curlget.png" class="cover">
 	</section>
 	<section class="slide">
-		<h2>相關新聞</h2>
+		<img src="pictures/curlput.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/curlpost.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/curldelete.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/curlpatch.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
 		<ol>
-			<li class="next">原本: 同類別下隨機抓取 n 則新聞</li>
-			<li class="next">修正: 分析內文，取得真正相關的新聞</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/relatedNews1.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/relatedNews2.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/relatedNews3.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/relatedNews.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>相關新聞: 成效</h2>
-		<ol>
-			<li class="next">時間區間: 2016/06/07 ~ 2016/06/13</li>
-			<li class="next">點擊數: 相關新聞的點擊數較其他新聞多了 <mark>44%</mark></li>
-		</ol>
-	</section>
-	<section class="slide sub-cover">
-		<h2>看 code 時間</h2>
-		<img src="pictures/code.jpg" class="cover">
-		<style>
-			.sub-cover h2 {
-				margin: 400px 0 0;
-				padding: 10px;
-				color: #fff;
-				text-align: center;
-				font-size: 50px;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>幾件必須做的基礎工程</h2>
-		<ol>
-			<li class="next">在 Laravel 中整合 Elasticsearch</li>
-			<ol>
-				<li class="next">Full Re-build: 有機會重新分析資料</li>
+			<li class="next">
+				HTTP Status Code
 				<ol>
-					<li class="next">Command: <code>php artisan elasticsearch:all --v</code></li>
-				</ol>
-				<li class="next">Wrapper: 串官方的 library，方便打 API</li>
-				<li class="next">Synchronization: 即時同步 CMS 新增/修改/刪除 動作</li>
-				<ol>
-					<li class="next">Full Re-build 時，用 Cache 通知同步動作要同時發生在新的與舊的 index</code></li>
-				</ol>
-			</ol>
+					<li class="next">Success: 200 OK</li>
+			</li>
 		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/statuscode200.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
+		<ol>
+			<li>
+				HTTP Status Code
+				<ol>
+					<li>Success: 200 OK</li>
+					<li class="next">Error:</li>
+				</ol>
+			</li>
+		</ol>
+		<img src="pictures/errorcode.png" class="next place bottom right">
+	</section>
+	<section class="slide">
+		<img src="pictures/curlerror.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/curlerror1.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/curlerror2.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
+		<ol>
+			<li>
+				Response Payload
+				<ol>
+					<li class="next">Success:</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<img src="pictures/payloadget.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/payloadput.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/payloadpatch.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/payloadpost.png" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/payloaddelete.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Firebase Realtime Database API</h2>
+		<ol>
+			<li>
+				Response Payload
+				<ol>
+					<li>Success:</li>
+					<li class="next">Error:</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<img src="pictures/payloaderror.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Pros and Cons</h2>
+		<ol>
+			<li class="next">
+				Pros
+				<ol>
+					<li class="next">使用 HTTP Status Code 做溝通</li>
+					<li class="next">一致用 200 代表成功，不會有其他 2xx 的可能</li>
+					<li class="next">Payload 有 error 的 Key 時，HTTP Status Code 必定不是 2xx</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<img src="pictures/payloaderrorconsist.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Pros and Cons</h2>
+		<ol>
+			<li>
+				Pros
+				<ol>
+					<li>使用 HTTP Status Code 做溝通</li>
+					<li>Payload 有 error 的 Key 時，HTTP Status Code 必定不是 2xx</li>
+					<li>一致用 200 代表成功，不會有其他 2xx 的可能</li>
+				</ol>
+			</li>
+			<li class="next">
+				Cons
+				<ol>
+					<li class="next">Response Payload 沒有一致的格式，一旦後台 Key 值更動，則前台會直接因為找不到 Key 而出錯</li>
+				</ol>
+			</li>
+		</ol>
 	</section>
 	<section class="slide" id="end">
 		<h2>Q & A</h2>
