@@ -81,7 +81,7 @@
 		<h2>What is RESTful API ?</h2>
 		<ol>
 			<li class="next">符合 REST 架構設計的 API</li>
-			<li class="next">符合: 七大目標所衍伸出來的五大特徵</li>
+			<li class="next">符合: 六大目標所衍伸出來的五大特徵</li>
 		</ol>
 		<style>
 			ol ol {
@@ -96,7 +96,7 @@
 		<h2>Review: What is REST ?</h2>
 		<ol>
 			<li class="next"><a href="http://whatisrest.com/">http://whatisrest.com/</a></li>
-			<li class="next">The 7 goals for implement RESTful API:
+			<li class="next">The 6 goals for implement RESTful API:
 				<ol>
 					<li class="next"><mark>Simplicity</mark></li>
 					<li class="next">Scalability</li>
@@ -104,7 +104,6 @@
 					<li class="next">Performance</li>
 					<li class="next">Modifiability</li>
 					<li class="next">Visibility</li>
-					<li class="next">Portability</li>
 				</ol>
 			</li>
 		</ol>
@@ -123,25 +122,25 @@
 			<li>
 				<mark>Simplicity</mark>
 				<ol>
-					<li class="next">分工，各個單元的複雜度要低</li>
+					<li class="next">如何讓架構的複雜度低</li>
 				</ol>
 			</li>
 			<li>
 				Scalability
 				<ol>
-					<li class="next">可以應付服務需求量暴增的情況</li>
+					<li class="next">如何在需求量暴增的情況下，也不影響服務結果</li>
 				</ol>
 			</li>
 			<li>
 				Reliability
 				<ol>
-					<li class="next">接受架構中部分損壞而不影響服務</li>
+					<li class="next">如何在架構中部分損壞時，也不影響服務</li>
 				</ol>
 			</li>
 			<li>
 				Performance
 				<ol>
-					<li class="next">不受網路傳輸影響回傳結果</li>
+					<li class="next">如何不受網路傳輸限制，而影響回傳結果的時間</li>
 				</ol>
 			</li>
 		</ol>
@@ -160,18 +159,12 @@
 			<li>
 				Modifiability
 				<ol>
-					<li class="next">對部分架構做更動而不影響服務</li>
+					<li class="next">如何在對部分架構做更動時，也不影響服務</li>
 				</ol>
 			</li>
 			<li>Visibility
 				<ol>
-					<li class="next">在傳輸過程中也可以看出所請求的服務是什麼</li>
-				</ol>
-			</li>
-			<li>
-				Portability
-				<ol>
-					<li class="next">可以更換部署地點而不影響服務</li>
+					<li class="next">如何讓傳輸過程中，可以看出所請求的服務是什麼，進而達到幫助完成服務的目標</li>
 				</ol>
 			</li>
 		</ol>
@@ -191,18 +184,79 @@
 				<ol>
 					<li class="next">
 						Client-Server
-						<ol class="next">
-							<li>Scalability</li>
-							<li>Modifiability</li>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/clientserver.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>The 5 constraints (or characteristics):
+				<ol>
+					<li>
+						Client-Server
+						<ol>
+							<li class="next">Scalability: 依據不同 Request 可以做不同的擴充</li>
+							<ol>
+								<li class="next">例如: Elasticsearch 相關的服務需要擴充，新增 Elasticsearch Node</li>
+							</ol>
+							<li class="next">Modifiability: 更動單一個 API，不影響其他的</li>
 						</ol>
 					</li>
 					<li class="next">
 						Layered System
-						<ol class="next">
-							<li>Scalability</li>
-							<li>Modifiability</li>
-							<li>Visibility</li>
-							<li><mark>Simplicity</mark></li>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/layer1.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/layer2.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/layer3.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/layer4.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/layer5.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>The 5 constraints (or characteristics):
+				<ol>
+					<li>
+						Layered System
+						<ol>
+							<li class="next">Scalability: 服務分層，依據需要的層級做擴充</li>
+							<li class="next">Modifiability: 修改單一層級，不影響服務</li>
+							<li class="next">Visibility: 要達到分層，需要讓傳輸過程的 Request / Response 是可以被解析的</li>
+							<li class="next"><mark>Simplicity</mark>: 適當分工</li>
 						</ol>
 					</li>
 				</ol>
@@ -224,19 +278,14 @@
 				<ol>
 					<li class="next">
 						Interface / Uniform Contract
-						<ol class="next">
-							<li><mark>Simplicity</makr></li>
-							<li>Modifiability</li>
-							<li>Visibility</li>
-						</ol>
-					</li>
-					<li class="next">
-						Stateless
-						<ol class="next">
-							<li>Scalability</li>
-							<li>Modifiability</li>
-							<li>Visibility</li>
-							<li>Reliability</li>
+						<ol>
+							<li class="next">建立共通的合約</li>
+							<ol>
+								<li class="next">例如: Request 有 Lasutung 這個字時，表示他要打開 Lasutung 的視訊</li>
+							</ol>
+							<li class="next"><mark>Simplicity</makr>: 不需要對每個 Request 客製化</li>
+							<li class="next">Modifiability: 知道合約的各方，可以獨立修改自己的部分而不影響其他合約方</li>
+							<li class="next">Visibility: 在傳輸過程中，都可以透過合約來檢視這個 Request 的需求或是 Response 的大致含義</li>
 						</ol>
 					</li>
 				</ol>
@@ -249,6 +298,61 @@
 			.slide ol ol>li::before {
 				content: '';
 			}
+			.slide ol ol ol {
+				font-size: 21px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>The 5 constraints (or characteristics):
+				<ol>
+					<li class="next">
+						Stateless
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/state.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<img src="pictures/stateless.jpg" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Review: What is REST ?</h2>
+		<ol>
+			<li>The 5 constraints (or characteristics):
+				<ol>
+					<li>
+						Stateless
+						<ol>
+							<li class="next">Scalability: 不用處理 Request 狀態被存在哪裡的問題</li>
+							<li class="next">Modifiability: 不用擔心修改 Request 會對個別的使用者造成怎樣的影響</li>
+							<li class="next">Visibility: Request 所需資訊會一次帶齊，中介者可以解析出該 Request 確切的請求</li>
+							<li class="next">Reliability: 部分 Server 服務中斷時，還是可以因應 Request</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+			.slide ol ol ol {
+				font-size: 21px;
+			}
 		</style>
 	</section>
 	<section class="slide">
@@ -258,9 +362,9 @@
 				<ol>
 					<li class="next">
 						Cache
-						<ol class="next">
-							<li>Scalability</li>
-							<li>Performance</li>
+						<ol>
+							<li class="next">Scalability: 不是所有流量都直接進到 Server</li>
+							<li class="next">Performance: 經過的網路傳輸路徑短，回傳時間短</li>
 						</ol>
 					</li>
 				</ol>
@@ -279,7 +383,7 @@
 		<h2>The Effection to the API Design</h2>
 		<h3 class="next">Interface / Uniform Contract</h3>
 		<ol>
-			<li class="next">HTTP Varbs</li>
+			<li class="next">HTTP Method</li>
 		</ol>
 		<table class="next">
 			<tr>
@@ -317,10 +421,10 @@
 		</ol>
 		<pre>
 			<code class="next">GET /users</code>
-			<code class="next">GET /user<mark>s</mark>/1</code>
+			<code class="next">GET /user<mark>s</mark>/lasutung</code>
 			<code class="next">POST /news</code>
 			<code class="next">PUT /news/1</code>
-			<code class="next">DELETE /users/1/news/1 <span class="next">??</span></code>
+			<code class="next">DELETE /users/lasutung/news/1 <span class="next">??</span></code>
 			<code class="next">DELETE /news/1 # Simplicity</code>
 			<code class="next">DELETE /news/1,2,3</code>
 		</pre>
