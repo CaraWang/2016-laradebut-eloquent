@@ -718,6 +718,44 @@
 	<section class="slide">
 		<img src="pictures/appends.png" class="cover">
 	</section>
+	<section class="slide">
+		<h2>Introduction to Eloquent</h2>
+		<ol>
+			<li>
+				其他關於 Eloquent 的小事
+				<ol>
+					<li>設定 <mark>attributes</mark> 預設值</li>
+					<li>
+						設定 <mark>casts</mark> 資料型別
+						<ol>
+							<li><mark>price</mark> 必須是 integer</li>
+							<li>有個小問題兒: 如果你用了 Mutator，設定 <mark>$casts</mark> 就會無效 <code>in version: 5.3.24</code></li>
+						</ol>
+					</li>
+					<li>設定 <mark>appends</mark> 輸出必須欄位</li>
+					<li class="next">
+						設定 <mark>CREATED_AT</mark> 和 <mark>UPDATED_AT</mark>
+						<ol>
+							<li class="next">migration 得要自己設定</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<pre>
+			<code>$table->timestamp('createdAt')->nullable();</code>
+			<code>$table->timestamp('updatedAt')->nullable();</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Why Do We Use Laravel ?</h2>
+		<ol>
+			<li class="next">跟你的 Framwork 學習</li>
+			<li class="next">練習看 Source Code</li>
+		</ol>
+	</section>
 	<section class="slide" id="end">
 		<h2>Q & A</h2>
 		<img src="pictures/end.jpg" alt="" class="cover">
