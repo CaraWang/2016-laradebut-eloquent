@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>API Survey #2 - Firebase Realtime Database</title>
+	<title>Laradebut #5 - 關於 CRUD 外的一點小事</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,17 +9,17 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1>API Survey #2 - Firebase Realtime Database</h1>
+		<h1>Laradebut #5 - 關於 CRUD 外的一點小事</h2>
 		<p>Cara Wang &lt;caraw@cnyes.com&gt;</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2>API Survey #2</h2>
-		<h3>Firebase Realtime Database</h3>
+		<h2>Laradebut #5</h2>
+		<h3>關於 CRUD 外的一點小事</h3>
 		<div class="author">
 			<p>@author Cara Wang &lt;caraw@cnyes.com&gt;</p>
-			<p>@since 2016/11/24</p>
+			<p>@since 2016/11/29</p>
 		</div>
-		<img src="pictures/cover.jpeg" class="cover">
+		<img src="pictures/cover.jpg" class="cover">
 		<style>
 			#cover h2 {
 				margin: 14% 0 0;
@@ -39,7 +39,8 @@
 				font-size:30px;
 				}
 			.author {
-				margin:10px 230px 0;
+				margin-top: 20px;
+				margin-left: 248px;
 				color:#f0fcfe;
 				font-style:italic;
 				font-size:20px;
@@ -57,53 +58,29 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>The Goal of API Survey</h2>
-		<ol>
-			<li class="next">Analyze the design of public API ( compare to the principle of RESTful API)
-				<ol>
-					<li class="next">Request path / Response format, etc…</li>
-				</ol>
-			</li>
-			<li class="next">Analyze the pros. and cros.</li>
-			<li class="next">Playground (optional)</li>
-			<li class="next">Feedback to our API design and implementation</li>
-		</ol>
+		<img src="pictures/cara.png" class="place left">
+		<div class="authorDesc">
+			<h2>PHP Developer</h2>
+			<ol>
+				<li class="next">2014/09 ~ now</li>
+				<li class="next"><a href="https://codeigniter.com/">CodeIgniter</a></li>
+				<li class="next"><a href="https://phalconphp.com/">Phalcon</a></li>
+				<li class="next"><a href="https://laravel.com/">Laravel</a></li>
+			</ol>
+		</div>
 		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
+			.authorDesc {
+				margin-left: 445px;
 			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>What is RESTful API ?</h2>
+		<h2>Why Do We Need Framework in PHP ?</h2>
 		<ol>
-			<li class="next">符合 REST 架構設計的 API</li>
-			<li class="next">符合: 六大目標所衍伸出來的五大特徵</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li class="next"><a href="http://whatisrest.com/">http://whatisrest.com/</a></li>
-			<li class="next">The 6 goals for implement RESTful API:
+			<li class="next">
+				Framework 幫忙做了哪些事 ?
 				<ol>
-					<li class="next"><mark>Simplicity</mark></li>
-					<li class="next">Scalability</li>
-					<li class="next">Reliability</li>
-					<li class="next">Performance</li>
-					<li class="next">Modifiability</li>
-					<li class="next">Visibility</li>
+					<li class="next">目錄結構</li>
 				</ol>
 			</li>
 		</ol>
@@ -117,106 +94,31 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Review: What is REST ?</h2>
+		<img src="pictures/codeigniterdir.png" class="cover">
+		<h2>CodeIgniter</h2>
+	</section>
+	<section class="slide">
+		<img src="pictures/phalcondir.png" class="cover">
+		<h2>Phalcon</h2>
+		<a href="https://github.com/phalcon/mvc">Phalcon MVC Examples</a>
+	</section>
+	<section class="slide">
+		<img src="pictures/laraveldir.png" class="cover">
+		<h2>Laravel</h2>
+	</section>
+	<section class="slide">
+		<h2>Why Do We Need Framework in PHP ?</h2>
 		<ol>
 			<li>
-				<mark>Simplicity</mark>
-				<ol>
-					<li class="next">如何讓架構的複雜度低</li>
-				</ol>
-			</li>
-			<li>
-				Scalability
-				<ol>
-					<li class="next">如何在需求量暴增的情況下，也不影響服務結果</li>
-				</ol>
-			</li>
-			<li>
-				Reliability
-				<ol>
-					<li class="next">如何在架構中部分損壞時，也不影響服務</li>
-				</ol>
-			</li>
-			<li>
-				Performance
-				<ol>
-					<li class="next">如何不受網路傳輸限制，而影響回傳結果的時間</li>
-				</ol>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li>
-				Modifiability
-				<ol>
-					<li class="next">如何在對部分架構做更動時，也不影響服務</li>
-				</ol>
-			</li>
-			<li>Visibility
-				<ol>
-					<li class="next">如何讓傳輸過程中，可以看出所請求的服務是什麼，進而達到幫助完成服務的目標</li>
-				</ol>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li class="next">The 5 constraints (or characteristics):
-				<ol>
-					<li class="next">
-						Client-Server
-					</li>
-				</ol>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<img src="pictures/clientserver.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li>The 5 constraints (or characteristics):
+				Framework 幫忙做了哪些事 ?
 				<ol>
 					<li>
-						Client-Server
+						目錄結構
 						<ol>
-							<li class="next">Scalability: 依據不同 Request 可以做不同的擴充</li>
-							<ol>
-								<li class="next">例如: Elasticsearch 相關的服務需要擴充，新增 Elasticsearch Node</li>
-							</ol>
-							<li class="next">Modifiability: 更動單一個 API，不影響其他的</li>
+							<li class="next">
+								方便協同合作: <span class="next">在同樣的規範與流程下寫程式</span>
+							</li>
 						</ol>
-					</li>
-					<li class="next">
-						Layered System
 					</li>
 				</ol>
 			</li>
@@ -231,34 +133,34 @@
 		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/layer1.jpg" class="cover">
+	<img src="pictures/codeigniterdirmvc.png" class="cover">
+		<h2>CodeIgniter</h2>
 	</section>
 	<section class="slide">
-		<img src="pictures/layer2.jpg" class="cover">
+		<img src="pictures/phalcondirmvc.png" class="cover">
+		<h2>Phalcon</h2>
 	</section>
 	<section class="slide">
-		<img src="pictures/layer3.jpg" class="cover">
+		<img src="pictures/laraveldirmvc.png" class="cover">
+		<h2>Laravel</h2>
 	</section>
 	<section class="slide">
-		<img src="pictures/layer4.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/layer5.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
+		<h2>Why Do We Need Framework in PHP ?</h2>
 		<ol>
-			<li>The 5 constraints (or characteristics):
+			<li>
+				Framework 幫忙做了哪些事 ?
 				<ol>
 					<li>
-						Layered System
+						目錄結構
 						<ol>
-							<li class="next">Scalability: 服務分層，依據需要的層級做擴充</li>
-							<li class="next">Modifiability: 修改單一層級，不影響服務</li>
-							<li class="next">Visibility: 要達到分層，需要讓傳輸過程的 Request / Response 是可以被解析的</li>
-							<li class="next"><mark>Simplicity</mark>: 適當分工</li>
+							<li>方便協同合作: <span>在同樣的規範與流程下寫程式</span>
+								<ol>
+									<li class="next">未來的自己也是一個要合作的對象</li>
+								</ol>
+							</li>
 						</ol>
 					</li>
+					<li class="next">不用重複造輪子</li>
 				</ol>
 			</li>
 		</ol>
@@ -272,99 +174,51 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li>The 5 constraints (or characteristics):
-				<ol>
-					<li class="next">
-						Interface / Uniform Contract
-						<ol>
-							<li class="next">建立共通的合約</li>
-							<ol>
-								<li class="next">例如: Request 有 Lasutung 這個字時，表示他要打開 Lasutung 的視訊</li>
-							</ol>
-							<li class="next"><mark>Simplicity</makr>: 不需要對每個 Request 客製化</li>
-							<li class="next">Modifiability: 知道合約的各方，可以獨立修改自己的部分而不影響其他合約方</li>
-							<li class="next">Visibility: 在傳輸過程中，都可以透過合約來檢視這個 Request 的需求或是 Response 的大致含義</li>
-						</ol>
-					</li>
-				</ol>
-			</li>
-		</ol>
+		<img src="pictures/hellodemo.png" class="cover">
+	</section>
+	<section class="slide">
+		<figure>
+			<img src="pictures/codeigniterhello.png" class="cover">
+			<h3>CodeIgniter</h3>
+		</figure>
 		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-			.slide ol ol ol {
-				font-size: 21px;
+			figure h3 {
+				margin-top: 50%;
+				color: #000;
+				font-size: 32px;
 			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li>The 5 constraints (or characteristics):
-				<ol>
-					<li class="next">
-						Stateless
-					</li>
-				</ol>
-			</li>
-		</ol>
+		<figure>
+			<img src="pictures/laravelhello.png" class="cover">
+			<h3>Laravel</h3>
+		</figure>
 		<style>
-			ol ol {
-				list-style-type: disc;
+			figure h3 {
+				margin-top: 55%;
+				color: #000;
+				font-size: 32px;
 			}
 		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/state.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/stateless.jpg" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
+		<h2>Why Do We Need Framework in PHP ?</h2>
 		<ol>
-			<li>The 5 constraints (or characteristics):
+			<li>
+				Framework 幫忙做了哪些事 ?
 				<ol>
 					<li>
-						Stateless
+						目錄結構
 						<ol>
-							<li class="next">Scalability: 不用處理 Request 狀態被存在哪裡的問題</li>
-							<li class="next">Modifiability: 不用擔心修改 Request 會對個別的使用者造成怎樣的影響</li>
-							<li class="next">Visibility: Request 所需資訊會一次帶齊，中介者可以解析出該 Request 確切的請求</li>
-							<li class="next">Reliability: 部分 Server 服務中斷時，還是可以回應 Request</li>
+							<li>方便協同合作: <span>在同樣的規範下寫程式</span></li>
 						</ol>
 					</li>
-				</ol>
-			</li>
-		</ol>
-		<style>
-			ol ol {
-				list-style-type: disc;
-			}
-			.slide ol ol>li::before {
-				content: '';
-			}
-			.slide ol ol ol {
-				font-size: 21px;
-			}
-		</style>
-	</section>
-	<section class="slide">
-		<h2>Review: What is REST ?</h2>
-		<ol>
-			<li>The 5 constraints (or characteristics):
-				<ol>
-					<li class="next">
-						Cache
+					<li>
+						不用重複造輪子
 						<ol>
-							<li class="next">Scalability: 不是所有流量都直接進到 Server</li>
-							<li class="next">Performance: 經過的網路傳輸路徑短，回傳時間短</li>
+							<li class="next">專注在開發要提供的服務上</li>
+							<li class="next">加速完成速度</li>
 						</ol>
 					</li>
 				</ol>
@@ -380,305 +234,50 @@
 		</style>
 	</section>
 	<section class="slide">
-		<h2>The Affection to API Design</h2>
-		<h3 class="next">Interface / Uniform Contract</h3>
+		<h2>Why Do We Need Framework in PHP ?</h2>
 		<ol>
-			<li class="next">HTTP Method</li>
+			<li class="next">
+				依據自家需求來選擇 Framework
+				<ol>
+					<li class="next">擇你所愛，愛你所選</li>
+					<li class="next">享受 Framework 提供的功能來合作與開發更快速</li>
+					<li class="next">跟你的 Framwork 學習</li>
+				</ol>
+			</li>
 		</ol>
-		<table class="next">
-			<tr>
-				<th scope="col">Method</th>
-				<th>Verb</th>
-				<th>Description</th>
-			</tr>
-			<tr class="next">
-				<td>GET</td>
-				<td>Read</td>
-				<td>Read one or more specific resource(s)</td>
-			</tr>
-			<tr class="next">
-				<td>POST</td>
-				<td>Create</td>
-				<td>Create one or more specific resource(s)</td>
-			</tr>
-			<tr class="next">
-				<td>PUT / PATCH</td>
-				<td>Update</td>
-				<td>Update one or more specific resource(s)</td>
-			</tr>
-			<tr class="next">
-				<td>DELETE</td>
-				<td>Remove</td>
-				<td>Remove one or more specific resource(s)</td>
-			</tr>
-		</table>
-	</section>
-	<section class="slide">
-		<h2>The Effection to the API Design</h2>
-		<h3>Interface / Uniform Contract</h3>
-		<ol>
-			<li class="next">Resource Name</li>
-		</ol>
-		<pre>
-			<code class="next">GET /users</code>
-			<code class="next">GET /user<mark>s</mark>/lasutung</code>
-			<code class="next">POST /news</code>
-			<code class="next">PUT /news/1</code>
-			<code class="next">DELETE /users/lasutung/news/1 <span class="next">??</span></code>
-			<code class="next">DELETE /news/1 # Simplicity</code>
-			<code class="next">DELETE /news/1,2,3</code>
-		</pre>
 		<style>
-			.slide pre code {
-				font-size: 0.8em;
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
 			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>The Effection to the API Design</h2>
-		<h3>Interface / Uniform Contract</h3>
+		<h2>Why Do We Use Laravel ?</h2>
 		<ol>
-			<li class="next">
-				HTTP Response
-				<ol>
-					<li class="next">2xx: Success</li>
-					<li class="next">3xx: Redirection</li>
-					<li class="next">4xx: Client Errors</li>
-					<li class="next">5xx: Service Errors</li>
-				</ol>
-			</li>
-			<li class="next"><a href="http://www.restapitutorial.com/httpstatuscodes.html">http://www.restapitutorial.com/httpstatuscodes.html</a></li>
+			<li class="next"><a href="http://www.slideshare.net/shengyou/phpconf-taiwan-2015-laravel-51-php">跟著 Laravel 5.1 一起成為更好的開發者</a></li>
 		</ol>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
 	</section>
 	<section class="slide">
-		<h2>The Effection to the API Design</h2>
-		<h3>Interface / Uniform Contract</h3>
-		<ol>
-			<li class="next">
-				Response Payload
-				<ol>
-					<li class="next">JSON</li>
-					<li class="next">Error Message</li>
-					<li class="next">Pagination</li>
-					<li class="next">...</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<h2>The Effection to the API Design</h2>
-		<ol class="next"><li>Idempotent: <span class="next">Can do it over and over again without causing different results</span></li></ol>
-		<table class="next">
-			<tr>
-				<th scope="col">Method</th>
-				<th>Idempotent</th>
-			</tr>
-			<tr class="next">
-				<td>GET</td>
-				<td>Yes</td>
-			</tr>
-			<tr class="next">
-				<td>POST</td>
-				<td>No</td>
-			</tr>
-			<tr class="next">
-				<td>PUT</td>
-				<td>Yes</td>
-			</tr>
-			<tr class="next">
-				<td>PATCH</td>
-				<td>No</td>
-			</tr>
-			<tr class="next">
-				<td>DELETE</td>
-				<td>Yes</td>
-			</tr>
-		</table>
-		<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html</a>
-	</section>
-	<section class="slide">
-		<h2>Firebase</h2>
-		<h3 class="next">Founded on Apr 6, 2011</h3>
-		<img class="cover next" src="pictures/acquiredByGoogle.png">
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<h3 class="next">HTTP Method</h3>
-		<table class="next">
-			<tr>
-				<th scope="col">Method</th>
-				<th>Firebase</th>
-				<th>RESTful API</th>
-			</tr>
-			<tr class="next">
-				<td>GET</td>
-				<td>Reading Data</td>
-				<td>Read</td>
-			</tr>
-			<tr class="next">
-				<td>POST</td>
-				<td><mark>Pushing Data</mark></td>
-				<td>Create</td>
-			</tr>
-			<tr class="next">
-				<td>PUT</td>
-				<td><mark>Writing Data</mark></td>
-				<td>Update</td>
-			</tr>
-			<tr class="next">
-				<td>PATCH</td>
-				<td>Updating Data</td>
-				<td>Update</td>
-			</tr>
-			<tr class="next">
-				<td>DELETE</td>
-				<td>Removing Data</td>
-				<td>Remove</td>
-			</tr>
-		</table>
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<ol>
-			<li class="next">Resource Name</li>
-		</ol>
-		<pre class="next">
-			<code>https://{your-project-name}.firebaseio.com</code>
-			<code>/{your-firebase-model-lv-1}</code>
-			<code>/{your-firebase-model-lv-2}</code>
-			<code>...</code>
-			<code>.json</code>
-		</pre>
-	</section>
-	<section class="slide">
-		<img src="pictures/curlget.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlput.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlpost.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curldelete.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlpatch.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<ol>
-			<li class="next">
-				HTTP Status Code
-				<ol>
-					<li class="next">Success: 200 OK</li>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/statuscode200.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<ol>
-			<li>
-				HTTP Status Code
-				<ol>
-					<li>Success: 200 OK</li>
-					<li class="next">Error:</li>
-				</ol>
-			</li>
-		</ol>
-		<img src="pictures/errorcode.png" class="next place bottom right">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlerror.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlerror1.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/curlerror2.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<ol>
-			<li>
-				Response Payload
-				<ol>
-					<li class="next">Success:</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/payloadget.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/payloadput.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/payloadpatch.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/payloadpost.png" class="cover">
-	</section>
-	<section class="slide">
-		<img src="pictures/payloaddelete.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Firebase Realtime Database API</h2>
-		<ol>
-			<li>
-				Response Payload
-				<ol>
-					<li>Success:</li>
-					<li class="next">Error:</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/payloaderror.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Pros and Cons</h2>
-		<ol>
-			<li class="next">
-				Pros
-				<ol>
-					<li class="next">使用 HTTP Status Code 做溝通</li>
-					<li class="next">一致用 200 代表成功，不會有其他 2xx 的可能</li>
-					<li class="next">Payload 有 error 的 Key 時，HTTP Status Code 必定不是 2xx</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<img src="pictures/payloaderrorconsist.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Pros and Cons</h2>
-		<ol>
-			<li>
-				Pros
-				<ol>
-					<li>使用 HTTP Status Code 做溝通</li>
-					<li>Payload 有 error 的 Key 時，HTTP Status Code 必定不是 2xx</li>
-					<li>一致用 200 代表成功，不會有其他 2xx 的可能</li>
-				</ol>
-			</li>
-			<li class="next">
-				Cons
-				<ol>
-					<li class="next">Response Payload 沒有一致的格式，一旦後台 Key 值更動，則前台會直接因為找不到 Key 而出錯</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<a href="https://github.com/CaraWang/news-note-demo">Demo</a>
-		<img src="pictures/demo.png" class="cover">
+		<h2>Introduction to Eloquent</h2>
+		<style>
+			ol ol {
+				list-style-type: disc;
+			}
+			.slide ol ol>li::before {
+				content: '';
+			}
+		</style>
 	</section>
 	<section class="slide" id="end">
 		<h2>Q & A</h2>
