@@ -523,7 +523,7 @@
 	<section class="slide">
 		<h2>Introduction to Eloquent</h2>
 		<ol>
-			<li class="next">價格要乘以折扣數:<span class="next">你可以這樣寫</span>
+			<li class="next">價格要乘以折扣數: <span class="next">你可以這樣寫</span>
 				<ol>
 					<li class="next">分別取出 <mark>price</mark> 和 <mark>discount</mark></li>
 					<li class="next">相乘後在顯示到頁面上</li>
@@ -593,6 +593,34 @@
 	<section class="slide">
 		<h2>Introduction to Eloquent</h2>
 		<ol>
+			<li class="next">其他 Mutators 的例子</li>
+			<li class="next">型號是顏色的話，結尾一定要是 <mark>色</mark></li>
+		</ol>
+	</section>
+	<section class="slide">
+		<pre class="smallCode">
+			<code>public function setTypeAttribute($value)</code>
+			<code>{</code>
+			<code>    if (((int)stripos($value, '色') - 1) !== mb_strlen($value)</code>
+			<code>            && in_array($value, self::$colors)) {</code>
+			<code>        $value .= '色';</code>
+			<code>    }</code>
+			<code> </code>
+			<code>    $this->attributes['type'] = $value;</code>
+			<code>}</code>
+		</pre>
+		<style>
+			.smallCode code {
+				font-size: 23px;
+			}
+		</style>
+	</section>
+	<section class="slide">
+		<img src="pictures/mutator1.png" class="cover">
+	</section>
+	<section class="slide">
+		<h2>Introduction to Eloquent</h2>
+		<ol>
 			<li class="next">其他 Accessors 的例子</li>
 			<li class="next">
 				品名包含: <span class="next">【品牌】</span><span class="next">品名</span><span class="next"> - 型號</span>
@@ -635,30 +663,23 @@
 	<section class="slide">
 		<h2>Introduction to Eloquent</h2>
 		<ol>
-			<li class="next">其他 Mutators 的例子</li>
-			<li class="next">型號是顏色的話，結尾一定要是 <mark>色</mark></li>
+			<li class="next">
+				可以利用 <mark>Accessors</mark> 設定不屬於資料表本身的欄位
+				<ol>
+					<li class="next">看起來好像很好，只是...
+					<li class="next">難道我每次都要自己把 <mark>$xxx->fullName</mark> 放進要顯示的地方嗎？</li>
+					<li class="next">別怕！你需要的是 <span class="next"><mark>$appends</makr></span></li>
+				</ol>
+			</li>
 		</ol>
 	</section>
 	<section class="slide">
-		<pre class="smallCode">
-			<code>public function setTypeAttribute($value)</code>
-			<code>{</code>
-			<code>    if (((int)stripos($value, '色') - 1) !== mb_strlen($value)</code>
-			<code>            && in_array($value, self::$colors)) {</code>
-			<code>        $value .= '色';</code>
-			<code>    }</code>
-			<code> </code>
-			<code>    $this->attributes['type'] = $value;</code>
-			<code>}</code>
+		<pre>
+			<code>protected $appends = ['fullName'];</code>
 		</pre>
-		<style>
-			.smallCode code {
-				font-size: 23px;
-			}
-		</style>
 	</section>
 	<section class="slide">
-		<img src="pictures/mutator1.png" class="cover">
+		<img src="pictures/appends.png" class="cover">
 	</section>
 	<section class="slide">
 		<h2>Introduction to Eloquent</h2>
@@ -739,33 +760,6 @@
 							<li><mark>price</mark> 必須是 integer</li>
 						</ol>
 					</li>
-					<li class="next">設定 <mark>appends</mark> 輸出必須欄位</li>
-				</ol>
-			</li>
-		</ol>
-	</section>
-	<section class="slide">
-		<pre>
-			<code>protected $appends = ['fullName'];</code>
-		</pre>
-	</section>
-	<section class="slide">
-		<img src="pictures/appends.png" class="cover">
-	</section>
-	<section class="slide">
-		<h2>Introduction to Eloquent</h2>
-		<ol>
-			<li>
-				其他關於 Eloquent 的小事
-				<ol>
-					<li>設定 <mark>attributes</mark> 預設值</li>
-					<li>
-						設定 <mark>casts</mark> 資料型別
-						<ol>
-							<li><mark>price</mark> 必須是 integer</li>
-						</ol>
-					</li>
-					<li>設定 <mark>appends</mark> 輸出必須欄位</li>
 					<li class="next">
 						設定 <mark>CREATED_AT</mark> 和 <mark>UPDATED_AT</mark>
 					</li>
@@ -792,7 +786,6 @@
 							<li><mark>price</mark> 必須是 integer</li>
 						</ol>
 					</li>
-					<li>設定 <mark>appends</mark> 輸出必須欄位</li>
 					<li>
 						設定 <mark>CREATED_AT</mark> 和 <mark>UPDATED_AT</mark>
 						<ol>
@@ -845,6 +838,7 @@
 		<h2>2015/09 ~ now</h2>
 	</section>
 	<section class="slide">
+		<h3>2016/03</h3>
 		<img src="pictures/cnyesmwebnews.jpg" class="cover">
 	</section>
 	<section class="slide">
@@ -854,6 +848,7 @@
 		<img src="pictures/cnyesmwebsearch.jpg" class="cover">
 	</section>
 	<section class="slide">
+		<h3>2016/05</h3>
 		<img src="pictures/cnyesappnews.jpg" class="cover">
 	</section>
 	<section class="slide">
@@ -863,7 +858,14 @@
 		<img src="pictures/cnyesappmarket1.jpg" class="cover">
 	</section>
 	<section class="slide">
+		<h3 class="release">2016/08</h3>
 		<img src="pictures/cnyesnews.png" class="cover">
+		<style>
+			.release {
+				margin-top: 50%;
+				color: #333;
+			}
+		</style>
 	</section>
 	<section class="slide">
 		<h2>如果你對我們有興趣，歡迎來找彩蛋</h2>
