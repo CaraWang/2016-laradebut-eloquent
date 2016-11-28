@@ -331,7 +331,7 @@
 					<li>快速的跟上語言版本 -> PHP7</li>
 					<li>遵循標準: <a href="http://www.php-fig.org/psr/psr-2/">PSR-2</a> & <a href="http://www.php-fig.org/psr/psr-4/">PSR-4</a></li>
 					<li>整合套件管理工具: <a href="https://getcomposer.org/">Composer</a> & <a href="https://www.npmjs.com/">npm</a></li>
-					<li class="next">學習 Design Pattern</li>
+					<li class="next">非常棒的附加價值: 學習 Design Pattern</li>
 				</ol>
 			</li>
 		</ol>
@@ -735,6 +735,34 @@
 					<li>設定 <mark>appends</mark> 輸出必須欄位</li>
 					<li class="next">
 						設定 <mark>CREATED_AT</mark> 和 <mark>UPDATED_AT</mark>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
+	<section class="slide">
+		<pre>
+			<code>const CREATED_AT = 'createdAt';</code>
+			<code>const UPDATED_AT = 'updatedAt';</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Introduction to Eloquent</h2>
+		<ol>
+			<li>
+				其他關於 Eloquent 的小事
+				<ol>
+					<li>設定 <mark>attributes</mark> 預設值</li>
+					<li>
+						設定 <mark>casts</mark> 資料型別
+						<ol>
+							<li><mark>price</mark> 必須是 integer</li>
+							<li>有個小問題兒: 如果你用了 Mutator，設定 <mark>$casts</mark> 就會無效 <code>in version: 5.3.24</code></li>
+						</ol>
+					</li>
+					<li>設定 <mark>appends</mark> 輸出必須欄位</li>
+					<li>
+						設定 <mark>CREATED_AT</mark> 和 <mark>UPDATED_AT</mark>
 						<ol>
 							<li class="next">migration 得要自己設定</li>
 						</ol>
@@ -752,6 +780,7 @@
 	<section class="slide">
 		<h2>Why Do We Use Laravel ?</h2>
 		<ol>
+			<li class="next">使用並享受 Framework 帶來的好處</li>
 			<li class="next">跟你的 Framwork 學習</li>
 			<li class="next">練習看 Source Code</li>
 			<li class="next"><a href="https://github.com/CaraWang/laradebut-5-demo">Demo Code</a></li>
